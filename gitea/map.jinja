@@ -1,0 +1,16 @@
+{% import_yaml 'gitea/defaults.yaml' as defaults %}
+{% import_yaml 'gitea/osmap.yaml' as osmap %}
+
+{# get the settings for the os_family grain #}
+{% set osfam = salt['grains.filter_by'](osmap) or {} %}
+
+{# merge the os family/codename specific data over the defaults #}
+{% do defaults.gitea.update(osfam) %}
+
+{# merge the pillar:lookup dict into the defaults/os specific dict #}
+{% set lookup = salt['pillar.get']('gitea:lookup',
+                                   default=defaults.gitea,
+                                   merge=True) %}
+
+{# merge the actual gitea pillar into the above combined dict #}
+{% set gitea = salt['pillar.get']('gitea', default=lookup, merge=True) %}

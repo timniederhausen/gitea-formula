@@ -1,0 +1,6 @@
+gitea:
+  # app.ini options
+  # first-level keys are either section or option names.
+  ini:
+    APP_NAME: Gitea: Git with a cup of tea
+    RUN_MODE: prod

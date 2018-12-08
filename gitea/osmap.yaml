@@ -1,0 +1,4 @@
+FreeBSD:
+  package: gitea
+  ini_path: /usr/local/etc/gitea/conf/app.ini
+  directory: /usr/local/share/gitea

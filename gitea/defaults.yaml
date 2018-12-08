@@ -1,0 +1,8 @@
+gitea:
+  user: git
+  group: git
+
+  ini: {}
+
+  service: gitea
+  service_enabled: true
