@@ -1,8 +1,9 @@
 {% from 'gitea/map.jinja' import gitea %}
+{% from 'gitea/macros.jinja' import sls_block with context %}
 
 gitea_install:
   pkg.installed:
-    - name: {{ gitea.package }}
+    {{ sls_block(gitea.package) | indent(4) }}
 
 gitea_app_ini:
   ini.options_present:
